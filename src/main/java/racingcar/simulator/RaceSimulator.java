@@ -16,7 +16,7 @@ public class RaceSimulator {
 
     public RaceSimulator(List<String> carNames, BigInteger count) {
         this.cars = new ArrayList<>();
-        for(String carName : carNames) {
+        for (String carName : carNames) {
             cars.add(new Car(carName));
         }
         this.count = count;
@@ -54,7 +54,7 @@ public class RaceSimulator {
     }
 
     private void carsTryMove() {
-        for(Car car : cars) {
+        for (Car car : cars) {
             car.tryMove();
             printNameAndDistance(car);
         }

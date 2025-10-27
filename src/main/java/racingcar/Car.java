@@ -37,7 +37,7 @@ public class Car {
     }
 
     public void tryMove() {
-        if(Randoms.pickNumberInRange(0, 9) >= 4) {
+        if (Randoms.pickNumberInRange(0, 9) >= 4) {
             distance = distance.add(BigInteger.ONE);
         }
     }
