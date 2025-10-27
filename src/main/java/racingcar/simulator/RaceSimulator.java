@@ -1,4 +1,6 @@
-package racingcar;
+package racingcar.simulator;
+
+import racingcar.Car;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

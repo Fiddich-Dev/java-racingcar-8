@@ -6,7 +6,7 @@ public class PositiveBigInteger {
 
     private final BigInteger value;
 
-    public PositiveBigInteger(BigInteger value) {
+    private PositiveBigInteger(BigInteger value) {
         if (value.compareTo(BigInteger.ZERO) <= 0) {
             throw new IllegalArgumentException("0 이하의 값은 허용되지 않습니다: " + value);
         }
@@ -15,10 +15,6 @@ public class PositiveBigInteger {
 
     public BigInteger getValue() {
         return value;
-    }
-
-    public static PositiveBigInteger of(BigInteger value) {
-        return new PositiveBigInteger(value);
     }
 
     public static PositiveBigInteger of(String input) {

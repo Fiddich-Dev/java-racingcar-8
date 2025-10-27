@@ -1,6 +1,7 @@
 package racingcar;
 
 
+import racingcar.contoller.RaceController;
 import racingcar.parser.RaceParser;
 import racingcar.view.RaceView;
 

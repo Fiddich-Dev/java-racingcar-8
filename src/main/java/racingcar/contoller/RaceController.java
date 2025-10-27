@@ -1,5 +1,7 @@
-package racingcar;
+package racingcar.contoller;
 
+import racingcar.Car;
+import racingcar.simulator.RaceSimulator;
 import racingcar.view.RaceView;
 
 import java.math.BigInteger;
