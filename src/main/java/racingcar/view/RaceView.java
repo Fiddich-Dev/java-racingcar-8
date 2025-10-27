@@ -26,6 +26,10 @@ public class RaceView extends AbstractView<String> {
         return PositiveBigInteger.of(Console.readLine()).getValue();
     }
 
+    public void closeScanner() {
+        Console.close();
+    }
+
     public void outputWinners(List<String> winners) {
         outputResult(OUTPUT_WINNER_MESSAGE, winners);
     }

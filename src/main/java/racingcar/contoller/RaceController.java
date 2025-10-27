@@ -1,11 +1,9 @@
 package racingcar.contoller;
 
-import racingcar.Car;
 import racingcar.simulator.RaceSimulator;
 import racingcar.view.RaceView;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RaceController {
@@ -18,8 +16,14 @@ public class RaceController {
 
     public void run() {
         // 입력 받기
-        List<String> carNames = raceView.inputCarNames();
-        BigInteger count = raceView.inputPositiveBigInteger();
+        List<String> carNames;
+        BigInteger count;
+        try {
+            carNames = raceView.inputCarNames();
+            count = raceView.inputPositiveBigInteger();
+        } finally {
+            raceView.closeScanner();
+        }
 
         // 시뮬레이터 생성
         RaceSimulator raceSimulator = new RaceSimulator(carNames, count);
