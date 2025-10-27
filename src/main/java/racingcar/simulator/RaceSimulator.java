@@ -8,6 +8,8 @@ import java.util.List;
 
 public class RaceSimulator {
 
+    private static final String RACE_START_MESSAGE = "실행 결과";
+    private static final String DISTANCE_MARK = "-";
     private final List<Car> cars;
     private final BigInteger count;
 
@@ -19,12 +21,12 @@ public class RaceSimulator {
         this.count = count;
     }
 
-    public List<String> simulate() {
-        System.out.println("실행 결과");
+    public List<String> race() {
+        System.out.println(RACE_START_MESSAGE);
 
         BigInteger i = BigInteger.ZERO;
         while (i.compareTo(count) < 0) {
-            tryMove();
+            carsTryMove();
             System.out.println();
             i = i.add(BigInteger.ONE);
         }
@@ -33,8 +35,6 @@ public class RaceSimulator {
     }
 
     private List<String> findWinners() {
-
-
         BigInteger maxDistance = BigInteger.ZERO;
         for (Car car : cars) {
             if (car.getDistance().compareTo(maxDistance) > 0) {
@@ -43,7 +43,6 @@ public class RaceSimulator {
         }
 
         List<String> winners = new ArrayList<>();
-
         for (Car car : cars) {
             if (car.getDistance().equals(maxDistance)) {
                 winners.add(car.getName());
@@ -53,23 +52,23 @@ public class RaceSimulator {
         return winners;
     }
 
-    private void tryMove() {
+    private void carsTryMove() {
         for(Car car : cars) {
             car.tryMove();
-            print(car);
+            printNameAndDistance(car);
         }
     }
 
-    private void print(Car car) {
-        System.out.println(car.getName() + " : " + convert(car.getDistance()));
+    private void printNameAndDistance(Car car) {
+        System.out.println(car.getName() + " : " + convertDistanceToMarks(car.getDistance()));
     }
 
-    private String convert(BigInteger distance) {
+    private String convertDistanceToMarks(BigInteger distance) {
         StringBuilder stringBuilder = new StringBuilder();
         BigInteger i = BigInteger.ZERO;
 
         while (i.compareTo(distance) < 0) {
-            stringBuilder.append("-");
+            stringBuilder.append(DISTANCE_MARK);
             i = i.add(BigInteger.ONE);
         }
 

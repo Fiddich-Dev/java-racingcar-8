@@ -25,7 +25,7 @@ public class RaceController {
         RaceSimulator raceSimulator = new RaceSimulator(carNames, count);
 
         // 로직 실행
-        List<String> winners = raceSimulator.simulate();
+        List<String> winners = raceSimulator.race();
 
         // 정답 출력
         raceView.outputWinners(winners);
