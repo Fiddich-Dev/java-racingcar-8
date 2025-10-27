@@ -12,10 +12,10 @@ public abstract class Parser<T> {
 
         String delimiter = getDelimiter();
 
-        String[] a = input.split(delimiter);
+        String[] segments = input.split(delimiter);
         List<String> result = new ArrayList<>();
-        for(String temp : a) {
-            result.add(temp.trim());
+        for(String segment : segments) {
+            result.add(segment.trim());
         }
 
         return result;

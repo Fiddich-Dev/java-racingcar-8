@@ -10,6 +10,7 @@ public class RaceSimulator {
 
     private static final String RACE_START_MESSAGE = "실행 결과";
     private static final String DISTANCE_MARK = "-";
+
     private final List<Car> cars;
     private final BigInteger count;
 
