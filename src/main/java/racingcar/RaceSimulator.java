@@ -1,51 +1,65 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Console;
-import camp.nextstep.edu.missionutils.Randoms;
-import racingcar.view.RaceView;
-
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RaceSimulator {
 
-    private final RaceView raceView;
-    private final List<String> carNames;
+    private final List<Car> cars;
     private final BigInteger count;
-    private final List<Car> cars = new ArrayList<>();
 
-    public RaceSimulator(RaceView raceView) {
-        this.raceView = raceView;
-        this.carNames = raceView.inputCarNames();
-        for(String carName : carNames) {
-            cars.add(new Car(carName));
-        }
-        this.count = raceView.inputPositiveBigInteger().getValue();
-        Console.close();
+    public RaceSimulator(List<Car> cars, BigInteger count) {
+        this.cars = cars;
+        this.count = count;
     }
 
-    public void simulate() {
+    public List<String> simulate() {
         System.out.println("실행 결과");
-        for(BigInteger i = BigInteger.ZERO; i.compareTo(count) < 0; i = i.add(BigInteger.ONE)) {
+
+        BigInteger i = BigInteger.ZERO;
+        while (i.compareTo(count) < 0) {
             tryMove();
             System.out.println();
+            i = i.add(BigInteger.ONE);
         }
+
+        return findWinners();
     }
 
-    public void tryMove() {
+    private List<String> findWinners() {
+
+
+        BigInteger maxDistance = BigInteger.ZERO;
+        for (Car car : cars) {
+            if (car.getDistance().compareTo(maxDistance) > 0) {
+                maxDistance = car.getDistance();
+            }
+        }
+
+        List<String> winners = new ArrayList<>();
+
+        for (Car car : cars) {
+            if (car.getDistance().equals(maxDistance)) {
+                winners.add(car.getName());
+            }
+        }
+
+        return winners;
+    }
+
+    private void tryMove() {
         for(Car car : cars) {
             car.tryMove();
             print(car);
         }
     }
 
-    public void print(Car car) {
+    private void print(Car car) {
         System.out.println(car.getName() + " : " + convert(car.getDistance()));
     }
 
-    public String convert(BigInteger distance) {
+    private String convert(BigInteger distance) {
         StringBuilder stringBuilder = new StringBuilder();
         BigInteger i = BigInteger.ZERO;
 

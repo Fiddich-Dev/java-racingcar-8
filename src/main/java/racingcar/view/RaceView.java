@@ -4,6 +4,7 @@ import camp.nextstep.edu.missionutils.Console;
 import racingcar.PositiveBigInteger;
 import racingcar.parser.Parser;
 
+import java.math.BigInteger;
 import java.util.List;
 
 public class RaceView extends AbstractView<String> {
@@ -20,9 +21,9 @@ public class RaceView extends AbstractView<String> {
         return inputString(INPUT_CAR_NAME_MESSAGE);
     }
 
-    public PositiveBigInteger inputPositiveBigInteger() {
+    public BigInteger inputPositiveBigInteger() {
         System.out.println(INPUT_ROUND_COUNT_MESSAGE);
-        return PositiveBigInteger.of(Console.readLine());
+        return PositiveBigInteger.of(Console.readLine()).getValue();
     }
 
     public void outputWinners(List<String> winners) {
