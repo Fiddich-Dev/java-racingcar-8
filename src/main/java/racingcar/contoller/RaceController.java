@@ -21,15 +21,10 @@ public class RaceController {
         List<String> carNames = raceView.inputCarNames();
         BigInteger count = raceView.inputPositiveBigInteger();
 
-        // 차 객체 생성
-        List<Car> cars = new ArrayList<>();
-        for (String carName : carNames) {
-            cars.add(new Car(carName));
-        }
+        // 시뮬레이터 생성
+        RaceSimulator raceSimulator = new RaceSimulator(carNames, count);
 
-
-        RaceSimulator raceSimulator = new RaceSimulator(cars, count);
-
+        // 로직 실행
         List<String> winners = raceSimulator.simulate();
 
         // 정답 출력

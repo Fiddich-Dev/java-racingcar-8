@@ -11,8 +11,11 @@ public class RaceSimulator {
     private final List<Car> cars;
     private final BigInteger count;
 
-    public RaceSimulator(List<Car> cars, BigInteger count) {
-        this.cars = cars;
+    public RaceSimulator(List<String> carNames, BigInteger count) {
+        this.cars = new ArrayList<>();
+        for(String carName : carNames) {
+            cars.add(new Car(carName));
+        }
         this.count = count;
     }
 
