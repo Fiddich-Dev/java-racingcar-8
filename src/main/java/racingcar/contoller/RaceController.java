@@ -15,7 +15,6 @@ public class RaceController {
     }
 
     public void run() {
-        // 입력 받기
         List<String> carNames;
         BigInteger count;
         try {
@@ -25,13 +24,9 @@ public class RaceController {
             raceView.closeScanner();
         }
 
-        // 시뮬레이터 생성
         RaceSimulator raceSimulator = new RaceSimulator(carNames, count);
-
-        // 로직 실행
         List<String> winners = raceSimulator.race();
 
-        // 정답 출력
         raceView.printWinners(winners);
     }
 }
