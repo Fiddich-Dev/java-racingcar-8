@@ -32,6 +32,6 @@ public class RaceController {
         List<String> winners = raceSimulator.race();
 
         // 정답 출력
-        raceView.outputWinners(winners);
+        raceView.printWinners(winners);
     }
 }

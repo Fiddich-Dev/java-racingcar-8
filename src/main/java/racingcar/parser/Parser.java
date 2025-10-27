@@ -1,10 +1,27 @@
 package racingcar.parser;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public interface Parser<T> {
+public abstract class Parser<T> {
 
-    List<T> parseInput(String input);
+    public List<String> parseToList(String input) {
+        if(input == null || input.isBlank()) {
+            throw new IllegalArgumentException("입력값이 비어있습니다.");
+        }
 
-    String formatOutput(List<T> result);
+        String delimiter = getDelimiter();
+
+        String[] a = input.split(delimiter);
+        List<String> result = new ArrayList<>();
+        for(String temp : a) {
+            result.add(temp.trim());
+        }
+
+        return result;
+    }
+
+    public abstract String parseToOutputTemplate(T result);
+
+    protected abstract String getDelimiter();
 }

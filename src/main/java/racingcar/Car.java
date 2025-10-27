@@ -24,9 +24,7 @@ public class Car {
         }
 
         if (name.length() > MAX_NAME_LENGTH) {
-            throw new IllegalArgumentException(
-                    "자동차 이름은 " + MAX_NAME_LENGTH + "글자 이하만 가능합니다: " + name
-            );
+            throw new IllegalArgumentException("자동차 이름은 " + MAX_NAME_LENGTH + "글자 이하만 가능합니다: " + name);
         }
     }
 
