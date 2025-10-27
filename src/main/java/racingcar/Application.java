@@ -7,6 +7,10 @@ import racingcar.view.RaceView;
 public class Application {
     public static void main(String[] args) {
         // TODO: 프로그램 구현
+        RaceParser raceParser = new RaceParser();
+        RaceView raceView = new RaceView(raceParser);
 
+        RaceController raceController = new RaceController(raceView);
+        raceController.run();
     }
 }

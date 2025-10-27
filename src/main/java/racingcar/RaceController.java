@@ -9,11 +9,9 @@ import java.util.List;
 public class RaceController {
 
     private final RaceView raceView;
-    private final RaceSimulator raceSimulator;
 
-    public RaceController(RaceView raceView, RaceSimulator raceSimulator) {
+    public RaceController(RaceView raceView) {
         this.raceView = raceView;
-        this.raceSimulator = raceSimulator;
     }
 
     public void run() {
@@ -26,6 +24,9 @@ public class RaceController {
         for (String carName : carNames) {
             cars.add(new Car(carName));
         }
+
+
+        RaceSimulator raceSimulator = new RaceSimulator(cars, count);
 
         List<String> winners = raceSimulator.simulate();
 
